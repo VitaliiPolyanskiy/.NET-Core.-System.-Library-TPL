@@ -15,6 +15,7 @@ namespace Library_TPL
         {
             InitializeComponent();
         }
+
         void GeneratorOfNumbers(string filename)
         {
             try
@@ -28,7 +29,7 @@ namespace Library_TPL
                 }
                 writer.Close();
                 file.Close();
-                MessageBox.Show("Файл с массивом чисел успешно создан!");
+                MessageBox.Show("Файл із масивом чисел успішно створено!");
             }
             catch (Exception e)
             {
@@ -49,18 +50,18 @@ namespace Library_TPL
 
         private void button3_Click(object sender, EventArgs e)
         {
-            // Task - асинхронная операция - элементарная единица исполнения
+            // Task - асинхронна операція - елементарна одиниця виконання
             Task tsk1 = new Task(Task1);
             Task tsk2 = new Task(Task2, "../../array2.dat");
             try
             {
-                // Start запускает Task.
+                // Start запускає Task
                 tsk1.Start();
                 tsk2.Start();
-                // Wait ожидает завершения выполнения объекта Task.
+                // Wait очікує завершення виконання об'єкта Task
                 tsk1.Wait();
                 tsk2.Wait();
-                MessageBox.Show("Обе задачи выполнены!");
+                MessageBox.Show("Обидві задачі виконано!");
             }
             catch (Exception ex)
             {
@@ -68,7 +69,7 @@ namespace Library_TPL
             }
             finally
             {
-                // Dispose - освобождение ресурсов, используемых задачами
+                // Dispose - звільнення ресурсів, що використовуються задачами
                 tsk1.Dispose();
                 tsk2.Dispose();
             }
@@ -92,7 +93,7 @@ namespace Library_TPL
                 }
                 reader.Close();
                 file.Close();
-                MessageBox.Show("Максимальный элемент массива чисел " + ar[max].ToString() + " имеет индекс " +
+                MessageBox.Show("Максимальний елемент масиву чисел " + ar[max].ToString() + " має індекс " +
                                 max.ToString() + "\n");
             }
             catch (Exception e)
@@ -107,21 +108,21 @@ namespace Library_TPL
             if (t.Exception == null)
             {
                 MaxOfNumbers("../../array3.dat");
-                MessageBox.Show("Идентификатор задачи: " + Task.CurrentId);
-                MessageBox.Show("Идентификатор предыдущей задачи: " + t.Id);
+                MessageBox.Show("Ідентифікатор задачі: " + Task.CurrentId);
+                MessageBox.Show("Ідентифікатор попередньої задачі: " + t.Id);
             }
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Task tsk = new Task(Task2, "../../array3.dat"); // создадим первую задачу
-            Task taskCont = tsk.ContinueWith(ContTask); // создадим продолжение задачи
+            Task tsk = new Task(Task2, "../../array3.dat"); // створимо першу задачу
+            Task taskCont = tsk.ContinueWith(ContTask); // створимо продовження задачі
             try
             {
-                tsk.Start(); // запустим первую задачу на выполнение
-                taskCont.Wait(); // ожидаем окончания выполнения второй задачи
-                MessageBox.Show("Обе задачи выполнены!");
+                tsk.Start(); // запустимо першу задачу на виконання
+                taskCont.Wait(); // очікуємо закінчення виконання другої задачі
+                MessageBox.Show("Обидві задачі виконано!");
             }
             catch (Exception ex)
             {
@@ -129,7 +130,7 @@ namespace Library_TPL
             }
             finally
             {
-                // Dispose - освобождение ресурсов, используемых задачами
+                // Dispose - звільнення ресурсів, що використовуються задачами
                 tsk.Dispose();
                 taskCont.Dispose();
             }
@@ -142,23 +143,23 @@ namespace Library_TPL
             Task tsk3 = null;
             try
             {
-                // Применим TaskFactory для запуска задачи
+                // Застосуємо TaskFactory для запуску задачі
                 tsk1 = Task.Factory.StartNew(Task1);
 
-                // TaskFactory предоставляет методы, упрощающие создание и управление задачами
+                // TaskFactory надає методи, що спрощують створення та керування задачами
                 tsk2 = Task.Factory.StartNew(() =>
                 {
                     GeneratorOfNumbers("../../array2.dat");
                 });
                 tsk3 = Task.Factory.StartNew(() =>
                 {
-                    Task.WaitAll(tsk1, tsk2); // ожидаем завершение задач
-                    // Dispose - освобождение ресурсов, используемых задачами
+                    Task.WaitAll(tsk1, tsk2); // очікуємо завершення задач
+                    // Dispose - звільнення ресурсів, що використовуються задачами
                     tsk1.Dispose();
                     tsk2.Dispose();
                 });
-                
-                MessageBox.Show("Обе задачи выполнены!");
+
+                MessageBox.Show("Обидві задачі виконано!");
             }
             catch (Exception ex)
             {
@@ -187,7 +188,7 @@ namespace Library_TPL
                 }
                 catch (EndOfStreamException)
                 {
-                    //Достигнут конец файла
+                    // Кінець файлу досягнуто
                 }
                 sum = sum / (file1.Length / 4);
                 reader.Close();
@@ -203,13 +204,13 @@ namespace Library_TPL
 
         private void button6_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Определим среднее арифметическое элементов массива ...");
+            MessageBox.Show("Визначимо середнє арифметичне елементів масиву ...");
             try
             {
-                // запустим на выполнение задачу, возвращающую значение типа double
+                // запустимо на виконання задачу, що повертає значення типу double
                 Task<double> tsk = Task<double>.Factory.StartNew(Task3, "../../array3.dat");
-                tsk.Wait();     
-                MessageBox.Show("Среднее арифметическое элементов массива: " + tsk.Result.ToString()); 
+                tsk.Wait();
+                MessageBox.Show("Середнє арифметичне елементів масиву: " + tsk.Result.ToString());
                 tsk.Dispose();
             }
             catch (Exception ex)
@@ -221,13 +222,13 @@ namespace Library_TPL
 
         void MyTask(Object ct)
         {
-            // Структура CancellationToken распространяет уведомление о том, что операции следует отменить.
+            // Структура CancellationToken поширює повідомлення про те, що операції слід скасувати.
             CancellationToken cancelTok = (CancellationToken)ct;
 
-            // завершим задачу, если она была отменена ещё до запуска
+            // завершимо задачу, якщо вона була скасована ще до запуску
             cancelTok.ThrowIfCancellationRequested();
-            // ThrowIfCancellationRequested создает исключение OperationCanceledException, 
-            // если для данного признака есть запрос на отмену.
+            // ThrowIfCancellationRequested створює виняток OperationCanceledException, 
+            // якщо для цієї ознаки є запит на скасування.
 
             FileStream file = null;
             BinaryWriter writer = null;
@@ -237,12 +238,12 @@ namespace Library_TPL
                 writer = new BinaryWriter(file);
                 for (int i = 0; i < 100000000; i++)
                 {
-                    // IsCancellationRequested получает значение, указывающее, 
-                    // есть ли для данного объекта CancellationTokenSource запрос на отмену.
+                    // IsCancellationRequested отримує значення, що вказує,
+                    // чи є для цього об'єкта CancellationTokenSource запит на скасування.
                     if (cancelTok.IsCancellationRequested)
                     {
-                        MessageBox.Show("Получен запрос на отмену задачи!");
-                        // выбрасываем исключение, если установлен признак отмены задачи
+                        MessageBox.Show("Отримано запит на скасування задачі!");
+                        // викидаємо виняток, якщо встановлено ознаку скасування задачі
                         cancelTok.ThrowIfCancellationRequested();
                     }
                     int n = rnd.Next(100);
@@ -258,26 +259,26 @@ namespace Library_TPL
 
         private void button7_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Генерируются данные ...");
-            // создадим объект источника признаков отмены      
+            MessageBox.Show("Генеруються дані ...");
+            // створимо об'єкт джерела ознак скасування      
             CancellationTokenSource cancelTokSrc = new CancellationTokenSource();
 
-            // получим признак отмены из источника и передадим его задаче и делегату
+            // отримаємо ознаку скасування з джерела і передамо її задачі та делегату
             Task tsk = Task.Factory.StartNew(MyTask,
-                cancelTokSrc.Token, /* Признак отмены CancellationToken, передаваемый в задачу */
-                cancelTokSrc.Token /* Признак отмены CancellationToken, который будет назначен новой задаче Task */ );
+                cancelTokSrc.Token, /* Ознака скасування CancellationToken, що передається в задачу */
+                cancelTokSrc.Token /* Ознака скасування CancellationToken, яка буде призначена новій задачі Task */ );
             Thread.Sleep(1000);
             try
             {
-                // после 3-х секундной задержки отменим задачу, используя признак отмены
+                // після 3-секундної затримки скасуємо задачу, використовуючи ознаку скасування
                 cancelTokSrc.Cancel();
-                // ожидаем завершения задачи
+                // очікуємо завершення задачі
                 tsk.Wait();
             }
             catch (AggregateException)
             {
-                if (tsk.IsCanceled) // проверим факт отмены задачи
-                    MessageBox.Show("Задача отменена!");
+                if (tsk.IsCanceled) // перевіримо факт скасування задачі
+                    MessageBox.Show("Задача скасована!");
             }
             finally
             {
@@ -290,9 +291,9 @@ namespace Library_TPL
         {
             try
             {
-                // Класс Parallel также является частью TPL и предназначен для упрощения параллельного выполнения кода.
-                // Одним из методов, позволяющих параллельное выполнение задач, является метод Invoke.
-                // При наличии нескольких ядер на целевой машине данные методы будут выполняться параллельно на различных ядрах.
+                // Клас Parallel також є частиною TPL і призначений для спрощення паралельного виконання коду.
+                // Одним із методів, що дозволяють паралельне виконання задач, є метод Invoke.
+                // За наявності кількох ядер на цільовій машині ці методи будуть виконуватися паралельно на різних ядрах.
                 Parallel.Invoke(Task1, () =>
                 {
                     GeneratorOfNumbers("../../array2.dat");
@@ -312,7 +313,7 @@ namespace Library_TPL
             {
                 result *= i;
             }
-            string str = string.Format("Факториал числа {0} равен {1}", x, result);
+            string str = string.Format("Факторіал числа {0} дорівнює {1}", x, result);
             MessageBox.Show(str);
             Thread.Sleep(3000);
         }
@@ -340,35 +341,35 @@ namespace Library_TPL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Stopwatch предоставляет набор методов и средств, 
-            // которые можно использовать для точного измерения затраченного времени.
+            // Stopwatch надає набір методів та засобів,
+            // які можна використовувати для точного вимірювання витраченого часу.
             Stopwatch sw = new Stopwatch();
             data = new int[100000000];
             sw.Start();
 
-            // Parallel.For выполняет цикл for, обеспечивая возможность параллельного выполнения итераций, 
-            // а также контроля состояния цикла и управления этим состоянием.
+            // Parallel.For виконує цикл for, забезпечуючи можливість паралельного виконання ітерацій,
+            // а також контролю стану циклу та керування цим станом.
             Parallel.For(0, data.Length, (i) => data[i] = i);
             sw.Stop();
-            MessageBox.Show("Параллельно выполняемый цикл инициализации: " +
+            MessageBox.Show("Паралельно виконуваний цикл ініціалізації: " +
                             sw.Elapsed.TotalSeconds + " секунд");
             sw.Reset();
             sw.Start();
             for (int i = 0; i < data.Length; i++) data[i] = i;
             sw.Stop();
-            MessageBox.Show("Последовательно выполняемый цикл инициализации: " +
+            MessageBox.Show("Послідовно виконуваний цикл ініціалізації: " +
                             sw.Elapsed.TotalSeconds + " секунд");
             sw.Reset();
             sw.Start();
             Parallel.For(0, data.Length, MyTransform);
             sw.Stop();
-            MessageBox.Show("Параллельно выполняемый цикл преобразования: " +
+            MessageBox.Show("Паралельно виконуваний цикл перетворення: " +
                             sw.Elapsed.TotalSeconds + " секунд");
             sw.Reset();
             sw.Start();
             for (int i = 0; i < data.Length; i++) MyTransform(i);
             sw.Stop();
-            MessageBox.Show("Последовательно выполняемый цикл преобразования: " +
+            MessageBox.Show("Послідовно виконуваний цикл перетворення: " +
                           sw.Elapsed.TotalSeconds + " секунд");
         }
 
@@ -378,7 +379,7 @@ namespace Library_TPL
         }
         SharedState sharedState = null;
         void MyTransform2(int i,
-            ParallelLoopState pls /* Позволяет итерациям циклов Parallel взаимодействовать с другими итерациями.*/)
+            ParallelLoopState pls /* Дозволяє ітераціям циклів Parallel взаємодіяти з іншими ітераціями. */)
         {
             lock (sharedState)
             {
@@ -386,7 +387,7 @@ namespace Library_TPL
             }
             if (data[i] < 0)
                 pls.Break();
-            // Сообщает, что цикл Parallel должен прекратить выполнение в первый удобный для системы момент в итерациях после текущей.
+            // Повідомляє, що цикл Parallel повинен припинити виконання у перший зручний для системи момент в ітераціях після поточної.
 
             if (data[i] < 1000) data[i] = 0;
             if (data[i] > 1000 & data[i] < 2000) data[i] = 100;
@@ -409,16 +410,16 @@ namespace Library_TPL
             data[1000] = -10;
             sharedState = new SharedState();
             sharedState.State = 0;
-            // Структура ParallelLoopResult предоставляет состояние выполнения цикла Parallel.
+            // Структура ParallelLoopResult надає стан виконання циклу Parallel.
             ParallelLoopResult loopResult =
-                        Parallel.For(0, data.Length, MyTransform2);
+                    Parallel.For(0, data.Length, MyTransform2);
 
-            // IsCompleted получает значение, указывающее, дошел ли цикл до завершения, 
-            // то есть все итерации цикла выполнены и он не получил запроса на преждевременное прерывание работы.
+            // IsCompleted отримує значення, що вказує, чи дійшов цикл до завершення,
+            // тобто всі ітерації циклу виконані і він не отримав запиту на передчасне переривання роботи.
             if (!loopResult.IsCompleted)
-                MessageBox.Show("Цикл завершился преждевременно на шаге " +
-                                   loopResult.LowestBreakIteration);
-            MessageBox.Show("Количество итераций " + sharedState.State);
+                MessageBox.Show("Цикл завершився передчасно на кроці " +
+                                loopResult.LowestBreakIteration);
+            MessageBox.Show("Кількість ітерацій " + sharedState.State);
 
         }
 

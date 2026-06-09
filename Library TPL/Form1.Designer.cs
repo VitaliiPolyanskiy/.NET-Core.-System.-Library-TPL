@@ -1,5 +1,4 @@
-﻿
-namespace Library_TPL
+﻿namespace Library_TPL
 {
     partial class Form1
     {
@@ -47,7 +46,7 @@ namespace Library_TPL
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(308, 31);
             this.button3.TabIndex = 19;
-            this.button3.Text = "Параллельное выполнение (class Task)";
+            this.button3.Text = "Паралельне виконання (class Task)";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -57,7 +56,7 @@ namespace Library_TPL
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(308, 31);
             this.button4.TabIndex = 21;
-            this.button4.Text = "Параллельное выполнение (class TaskFactory)";
+            this.button4.Text = "Паралельне виконання (class TaskFactory)";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -67,7 +66,7 @@ namespace Library_TPL
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(308, 31);
             this.button5.TabIndex = 22;
-            this.button5.Text = "Создание продолжения задачи";
+            this.button5.Text = "Створення продовження задачі";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -77,7 +76,7 @@ namespace Library_TPL
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(308, 31);
             this.button6.TabIndex = 23;
-            this.button6.Text = "Возврат значения из задачи";
+            this.button6.Text = "Повернення значення із задачі";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -87,7 +86,7 @@ namespace Library_TPL
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(308, 31);
             this.button7.TabIndex = 24;
-            this.button7.Text = "Отмена задачи";
+            this.button7.Text = "Скасування задачі";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -97,7 +96,7 @@ namespace Library_TPL
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(308, 31);
             this.button8.TabIndex = 25;
-            this.button8.Text = "Параллельное выполнение (class Parallel)";
+            this.button8.Text = "Паралельне виконання (class Parallel)";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -107,7 +106,7 @@ namespace Library_TPL
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(308, 31);
             this.button1.TabIndex = 27;
-            this.button1.Text = "Применение метода For";
+            this.button1.Text = "Застосування методу For";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -117,7 +116,7 @@ namespace Library_TPL
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(308, 31);
             this.button2.TabIndex = 28;
-            this.button2.Text = "Применение метода Break";
+            this.button2.Text = "Застосування методу Break";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -127,7 +126,7 @@ namespace Library_TPL
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(308, 31);
             this.button9.TabIndex = 29;
-            this.button9.Text = "Применение метода For (Факториал)";
+            this.button9.Text = "Застосування методу For (Факторіал)";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
@@ -137,7 +136,7 @@ namespace Library_TPL
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(308, 31);
             this.button10.TabIndex = 30;
-            this.button10.Text = "Применение метода ForEach";
+            this.button10.Text = "Застосування методу ForEach";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
@@ -159,7 +158,7 @@ namespace Library_TPL
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Многопоточное программирование";
+            this.Text = "Багатопотокове програмування";
             this.ResumeLayout(false);
 
         }
@@ -177,4 +176,3 @@ namespace Library_TPL
         private System.Windows.Forms.Button button10;
     }
 }
-
